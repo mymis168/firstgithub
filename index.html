@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alex Chen | Python Engineer Resume</title>
+    <style>
+      :root {
+        --bg: #f3f6fb;
+        --panel: #ffffff;
+        --panel-alt: #eef3ff;
+        --primary: #1d4ed8;
+        --primary-dark: #163db2;
+        --accent: #0ea5e9;
+        --text: #1f2937;
+        --muted: #6b7280;
+        --line: #e5e7eb;
+        --success: #10b981;
+        --shadow: 0 16px 40px rgba(17, 24, 39, 0.08);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Segoe UI", "Microsoft JhengHei", sans-serif;
+        background: linear-gradient(135deg, #eef4ff 0%, #f8fafc 100%);
+        color: var(--text);
+      }
+
+      .container {
+        width: min(1100px, calc(100% - 32px));
+        margin: 32px auto;
+      }
+
+      .resume {
+        background: var(--panel);
+        border: 1px solid rgba(148, 163, 184, 0.2);
+        border-radius: 20px;
+        box-shadow: var(--shadow);
+        overflow: hidden;
+      }
+
+      .header {
+        display: grid;
+        grid-template-columns: 1.5fr 0.9fr;
+        gap: 24px;
+        background: linear-gradient(135deg, #0f172a 0%, #1d4ed8 100%);
+        color: white;
+        padding: 42px 48px;
+      }
+
+      .profile h1 {
+        margin: 0;
+        font-size: clamp(2rem, 3vw, 3rem);
+        letter-spacing: 0.04em;
+      }
+
+      .title {
+        margin-top: 10px;
+        font-size: 1.2rem;
+        color: rgba(255, 255, 255, 0.9);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .summary {
+        margin-top: 22px;
+        line-height: 1.8;
+        max-width: 650px;
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 0.98rem;
+      }
+
+      .contact-box {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 16px;
+        padding: 22px 24px;
+        backdrop-filter: blur(12px);
+      }
+
+      .contact-box h3 {
+        margin: 0 0 16px;
+        letter-spacing: 0.08em;
+        font-size: 0.82rem;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .contact-item {
+        margin: 10px 0;
+        font-size: 0.96rem;
+        color: rgba(255, 255, 255, 0.95);
+      }
+
+      .content {
+        display: grid;
+        grid-template-columns: 1.3fr 0.7fr;
+        gap: 28px;
+        padding: 32px 48px 48px;
+      }
+
+      .main,
+      .side {
+        display: flex;
+        flex-direction: column;
+        gap: 26px;
+      }
+
+      .section {
+        background: var(--panel-alt);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 22px 24px;
+      }
+
+      .section h2 {
+        margin: 0 0 16px;
+        font-size: 1.1rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--primary-dark);
+      }
+
+      .job {
+        padding-top: 12px;
+        border-top: 1px solid var(--line);
+      }
+
+      .job:first-child {
+        border-top: none;
+        padding-top: 0;
+      }
+
+      .job-header {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        align-items: baseline;
+        margin-bottom: 8px;
+      }
+
+      .job-title {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--text);
+      }
+
+      .job-company {
+        color: var(--primary);
+        font-weight: 600;
+      }
+
+      .job-date {
+        color: var(--muted);
+        font-size: 0.9rem;
+        white-space: nowrap;
+      }
+
+      ul {
+        margin: 10px 0 0 18px;
+        padding: 0;
+        color: var(--text);
+        line-height: 1.8;
+      }
+
+      .project-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .project {
+        background: white;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 16px 16px 14px;
+      }
+
+      .project h3 {
+        margin: 0 0 8px;
+        font-size: 1rem;
+      }
+
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 12px;
+      }
+
+      .tag {
+        background: #e0ecff;
+        color: var(--primary-dark);
+        border: 1px solid #cfe0ff;
+        border-radius: 999px;
+        padding: 6px 10px;
+        font-size: 0.78rem;
+        font-weight: 600;
+      }
+
+      .skill-list {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .skill-item {
+        display: grid;
+        grid-template-columns: 110px 1fr;
+        gap: 12px;
+        align-items: center;
+      }
+
+      .skill-item span {
+        font-weight: 700;
+        color: var(--text);
+      }
+
+      .bar {
+        height: 12px;
+        background: #dfe8ff;
+        border-radius: 999px;
+        overflow: hidden;
+      }
+
+      .fill {
+        display: block;
+        height: 100%;
+        border-radius: inherit;
+        background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+      }
+
+      .level-95 { width: 95%; }
+      .level-90 { width: 90%; }
+      .level-88 { width: 88%; }
+      .level-85 { width: 85%; }
+      .level-80 { width: 80%; }
+
+      .mini-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .mini-list li {
+        position: relative;
+        padding-left: 18px;
+        margin: 8px 0;
+        line-height: 1.7;
+      }
+
+      .mini-list li::before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: var(--primary);
+        font-size: 1.1rem;
+      }
+
+      .award {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        font-size: 0.94rem;
+        color: var(--text);
+      }
+
+      @media (max-width: 820px) {
+        .header,
+        .content {
+          grid-template-columns: 1fr;
+        }
+
+        .header,
+        .content {
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+
+        .project-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="resume">
+        <header class="header">
+          <div class="profile">
+            <h1>Alex Chen</h1>
+            <div class="title">Python Engineer</div>
+            <p class="summary">
+              擅長後端服務開發、資料處理與自動化系統設計，專注於 Python 技術棧與高可用服務架構設計。
+              具備從需求分析、系統設計、開發測試到部署維運的全流程經驗，能夠高效協作並交付穩定、可擴展的產品解決方案。
+            </p>
+          </div>
+
+          <aside class="contact-box">
+            <h3>Contact</h3>
+            <div class="contact-item">📍 Taipei, Taiwan</div>
+            <div class="contact-item">📧 alex.chen.dev@gmail.com</div>
+            <div class="contact-item">📞 +886-912-345-678</div>
+            <div class="contact-item">🔗 github.com/alex-chen</div>
+            <div class="contact-item">💼 linkedin.com/in/alex-chen</div>
+          </aside>
+        </header>
+
+        <main class="content">
+          <div class="main">
+            <section class="section">
+              <h2>Work Experience</h2>
+
+              <div class="job">
+                <div class="job-header">
+                  <div>
+                    <div class="job-title">Senior Python Engineer</div>
+                    <div class="job-company">Apex Digital Co., Ltd.</div>
+                  </div>
+                  <div class="job-date">2022 - Present</div>
+                </div>
+                <ul>
+                  <li>負責開發與維護企業級 API 平台，支援超過 3,000 萬次/月的查詢與交易請求，提升服務穩定性與吞吐量。</li>
+                  <li>設計並實作基於 FastAPI 的微服務架構，整合 Redis 快取、PostgreSQL 與 Celery 任務隊列，將系統響應時間降低 38%。</li>
+                  <li>主導資料管線建構與 ETL 流程，使用 pandas、Airflow 與 ClickHouse 優化數據分析與報表產出，支援商業決策。</li>
+                  <li>帶領 3 名工程師共同開發高可用服務，建立 CI/CD 流程與監控告警機制，減少部屬失敗事件與維運成本。</li>
+                </ul>
+              </div>
+
+              <div class="job">
+                <div class="job-header">
+                  <div>
+                    <div class="job-title">Python Backend Developer</div>
+                    <div class="job-company">Nova Data Solutions</div>
+                  </div>
+                  <div class="job-date">2019 - 2022</div>
+                </div>
+                <ul>
+                  <li>開發電商與 CRM 系統後端模組，實現會員管理、訂單流程、庫存同步與報表匯出功能。</li>
+                  <li>重構既有 Django 專案，提升代碼可維護性與 API 設計一致性，改善團隊協作效率與交付速度。</li>
+                  <li>實作自動化測試與錯誤追蹤流程，提升回歸測試覆蓋率，降低上線問題的發生率。</li>
+                  <li>協同前端與資料團隊，整合第三方支付與物流 API，改善使用者體驗與系統流程自動化。</li>
+                </ul>
+              </div>
+            </section>
+
+            <section class="section">
+              <h2>Projects</h2>
+              <div class="project-grid">
+                <article class="project">
+                  <h3>智能監控與告警平台</h3>
+                  <p>建構可擴展的系統監控平台，整合日志收集、指標分析與異常告警，支援公司內部服務健康狀態管理。</p>
+                  <div class="tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">FastAPI</span>
+                    <span class="tag">Prometheus</span>
+                    <span class="tag">Kafka</span>
+                  </div>
+                </article>
+
+                <article class="project">
+                  <h3>自動化資料處理引擎</h3>
+                  <p>設計 ETL 處理引擎以處理日誌、交易資料與客戶報表，實現異常處理與批次任務自動化。</p>
+                  <div class="tags">
+                    <span class="tag">Django</span>
+                    <span class="tag">pandas</span>
+                    <span class="tag">Airflow</span>
+                    <span class="tag">PostgreSQL</span>
+                  </div>
+                </article>
+              </div>
+            </section>
+          </div>
+
+          <aside class="side">
+            <section class="section">
+              <h2>Core Skills</h2>
+              <div class="skill-list">
+                <div class="skill-item">
+                  <span>Python</span>
+                  <div class="bar"><i class="fill level-95"></i></div>
+                </div>
+                <div class="skill-item">
+                  <span>FastAPI</span>
+                  <div class="bar"><i class="fill level-90"></i></div>
+                </div>
+                <div class="skill-item">
+                  <span>Django</span>
+                  <div class="bar"><i class="fill level-88"></i></div>
+                </div>
+                <div class="skill-item">
+                  <span>SQL</span>
+                  <div class="bar"><i class="fill level-90"></i></div>
+                </div>
+                <div class="skill-item">
+                  <span>DevOps</span>
+                  <div class="bar"><i class="fill level-85"></i></div>
+                </div>
+              </div>
+            </section>
+
+            <section class="section">
+              <h2>Technical Stack</h2>
+              <ul class="mini-list">
+                <li>Python, FastAPI, Django, Flask</li>
+                <li>PostgreSQL, MySQL, Redis, MongoDB</li>
+                <li>Docker, Kubernetes, CI/CD</li>
+                <li>Celery, RabbitMQ, Kafka</li>
+                <li>Git, Linux, Nginx, AWS</li>
+              </ul>
+            </section>
+
+            <section class="section">
+              <h2>Education</h2>
+              <div class="award">
+                <strong>Computer Science</strong>
+                <span>2015 - 2019</span>
+              </div>
+              <p style="margin: 8px 0 0; color: var(--muted);">National Taiwan University of Science and Technology</p>
+            </section>
+
+            <section class="section">
+              <h2>Highlights</h2>
+              <ul class="mini-list">
+                <li>熟悉 RESTful API 設計與微服務架構</li>
+                <li>擅長高性能後端開發與系統優化</li>
+                <li>具備資料處理、數據分析與自動化能力</li>
+                <li>注重代碼品質、可維護性與交付效率</li>
+              </ul>
+            </section>
+          </aside>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>
